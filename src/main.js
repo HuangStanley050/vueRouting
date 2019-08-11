@@ -9,7 +9,10 @@ const router = new VueRouter({
   routes,
   mode: "history"
 });
-
+router.beforeEach((to, from, next) => {
+  console.log("global beforeeach");
+  next();
+});
 new Vue({
   el: "#app",
   router,

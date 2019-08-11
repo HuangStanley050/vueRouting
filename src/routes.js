@@ -18,8 +18,23 @@ export const routes = [
     },
     children: [
       { path: "", component: UserStart },
-      { path: ":id", component: UserDetail },
+      {
+        path: ":id",
+        component: UserDetail,
+        beforeEnter: (to, from, next) => {
+          console.log("inside route");
+          next();
+        }
+      },
       { path: ":id/edit", component: UserEdit, name: "userEdit" }
     ]
+  },
+  {
+    path: "/redirect-me",
+    redirect: { name: "home" }
+  },
+  {
+    path: "*",
+    redirect: { name: "home" }
   }
 ];
